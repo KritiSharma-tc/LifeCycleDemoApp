@@ -41,9 +41,23 @@
 
 ------------------------------------------------------------------------
 
+## 4. Click Back from DetailActivity → Return to MainActivity + HomeFragment
+
+    [DetailActivity]    onPause
+    [MainActivity]      onRestart
+        [HomeFragment]  onStart
+    [MainActivity]      onStart
+    [MainActivity]      onResume
+        [HomeFragment]  onResume
+    [DetailActivity]    onStop
+    [DetailActivity]    onDestroy
+
+------------------------------------------------------------------------
+
 ## Notes
 
 -   Activities control app-level lifecycle.
 -   Fragments follow activity state but have their own view lifecycle.
+-   `onRestart()` is called when returning to a stopped activity.
 -   Logs are grouped and indented for better readability on Redmi and
     small screens.
